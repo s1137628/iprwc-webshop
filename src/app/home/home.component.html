@@ -1,0 +1,11 @@
+<h1>Welkom bij de kleding webshop!</h1>
+
+<h2>Een willekeurig product dat wij aanbieden is hier te zien!</h2>
+
+<div class="product-box">
+    <img src="{{ randomProduct.imagePath }}" width="300" height="400" alt="Product Image">
+    <h4>{{ randomProduct.name }}</h4>
+    <p>{{ randomProduct.price + ' EURO' }}</p>
+    <p>{{ randomProduct.description }}</p>
+    <button (click)="toProductPage()">Naar product pagina</button>
+  </div>

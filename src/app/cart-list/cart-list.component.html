@@ -1,0 +1,21 @@
+<h1>Uw winkelwagen</h1>
+
+<div class="cart-container">
+  <div class="cart-items">
+    <div class="cart-item" *ngFor="let productEl of cart; let i = index">
+      <div class="product-image">
+        <img src="{{ productEl.imagePath }}" alt="{{ productEl.name }}">
+      </div>
+      <div class="product-details">
+        <h4>{{ productEl.name }}</h4>
+        <p>{{ productEl.price + ' EURO'}}</p>
+        <button (click)="popElementInCart(i)">Verwijder uit cart</button>
+      </div>
+    </div>
+  </div>
+  <div class="cart-summary">
+    <p>Total Price: {{getTotalPrice()}}</p>
+    <button type="button" class="btn btn-empty" (click)="emptyCart()">Empty Cart</button>
+    <button type="button" class="btn btn-success" (click)="orderProducts()">Order Products</button>
+  </div>
+</div>

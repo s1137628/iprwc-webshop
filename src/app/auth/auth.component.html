@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4 logInHead">
+        <h4 class="text-center">Inloggen</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <!-- Email input -->
+          <input type="text" class="center-block" placeholder="Email" formControlName="email"><br>
+
+          <!-- Password input -->
+          <input type="password" class="center-block" placeholder="Wachtwoord" formControlName="password">
+        </form>
+      </div>
+    </div>
+    <div class="row errorRow">
+      <div class="col-xs-12 errorDiv">
+        <!-- Display error message if needed -->
+        <!-- <p *ngIf="showError" class="alert-danger text-center error">Email of wachtwoord is niet correct<br>
+          Probeer het opnieuw</p> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Submit button -->
+        <button class="center-block" (click)="onLogin()">Inloggen</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="center-block" (click)="onRegister()">Registreer</button>
+      </div>
+    </div>
+  </div>
+</div>

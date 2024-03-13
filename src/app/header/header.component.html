@@ -1,0 +1,18 @@
+<header>
+  <div routerLink="">
+    <img src="../../assets/homeicon.png" width="24" height="24" alt="Home" />
+</div>
+<div routerLink="/products">
+    <img src="../../assets/hanger.png" width="24" height="24" alt="Products" />
+</div>
+    <div routerLink="/cart">
+      <img src="../../assets/carticon.png" width="24" height="24" />
+    </div>
+    <div *ngIf="authService.isLoggedIn()" routerLink="/user">
+      <img src="../../assets/user.png" width="24" height="24" />
+    </div>
+    <div *ngIf="!authService.isLoggedIn()" routerLink="/auth">
+      <img src="../../assets/user.png" width="24" height="24" />
+    </div>
+  </header>
+  

@@ -1,0 +1,8 @@
+<div class="product-box">
+    <img src="{{ product.imagePath }}" alt="Product Image">
+    <h4>{{ product.name }}</h4>
+    <p>{{ product.price + ' EURO'}}</p>
+    <p>{{ product.description}}</p>
+    <button class="editButton" type="button" *ngIf="role === 'ADMIN'" (click)="openEditPopup()">Edit product</button>
+    <button class="deleteButton" type="button" *ngIf="role === 'ADMIN'" (click)="removeProduct()">Remove product</button>
+  </div>

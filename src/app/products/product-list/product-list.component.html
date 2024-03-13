@@ -1,0 +1,13 @@
+<div class="header-section">
+  <br>
+  <h2>Overzicht van producten</h2>
+</div>
+<!-- <button  *ngIf="authService.isLoggedIn" class="btn btn-success" (click)="onNewProduct()">Voeg product toe</button> -->
+<br>
+<div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <app-product-item [product]='product'></app-product-item>
+    </div>
+  </div>
+  
+  

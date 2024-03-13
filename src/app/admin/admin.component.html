@@ -1,0 +1,74 @@
+<div>
+  <h1>Welkom bij uw admin panel</h1>
+</div>
+
+<br>
+
+<div class="addProduct">
+    <h2>Voeg product toe</h2>
+    <div class="form-container">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-box">
+          <div class="col-xs-8">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-box">
+          <div class="col-xs-8">
+            <div class="form-group">
+              <label for="imagePath">Image URL</label>
+              <input
+                type="text"
+                id="imagePath"
+                formControlName="imagePath"
+                class="form-control"
+                #imagePath>
+            </div>
+          </div>
+        </div>
+          <div class="col-xs-8">
+            <img [src]="imagePath.value" class="img-responsive">
+          </div>
+        <div class="form-box">
+          <div class="col-xs-8">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input
+                type="text"
+                id="description"
+                class="form-control"
+                formControlName="description">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-8">
+              <div class="form-group">
+                <label for="price">Price</label>
+                <input
+                  type="text"
+                  id="price"
+                  formControlName="price"
+                  class="form-control"
+                  pattern="^[0-9]*$">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+        type="submit"
+        class="btn btn-success" [disabled]="!productForm.valid"
+        >Voeg toe</button>
+      </form>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+<app-product-list-admin></app-product-list-admin>

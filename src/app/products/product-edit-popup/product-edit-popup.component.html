@@ -1,0 +1,26 @@
+<!-- product-edit-popup.component.html -->
+<h2>Edit Product</h2>
+<form [formGroup]="productForm">
+  <input formControlName="name" placeholder="Product Name">
+  <div *ngIf="productForm.get('name').invalid && productForm.get('name').touched">
+    Name is required.
+  </div>
+
+  <input formControlName="description" placeholder="Description">
+  <div *ngIf="productForm.get('description').invalid && productForm.get('description').touched">
+    Description is required.
+  </div>
+
+  <input formControlName="price" placeholder="Price">
+  <div *ngIf="productForm.get('price').invalid && productForm.get('price').touched">
+    Price is required and must be a valid number.
+  </div>
+
+  <input formControlName="imagePath" placeholder="Image path">
+  <div *ngIf="productForm.get('imagePath').invalid && productForm.get('imagePath').touched">
+    Image path is required.
+  </div>
+
+  <button (click)="onSaveClick()">Save</button>
+  <button (click)="onCancelClick()">Cancel</button>
+</form>

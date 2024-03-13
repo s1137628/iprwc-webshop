@@ -1,0 +1,7 @@
+<div class="product-box">
+    <img src="{{ product.imagePath }}" alt="Product Image">
+    <h4>{{ product.name }}</h4>
+    <p>{{ product.price + ' EURO'}}</p>
+    <p>{{ product.description}}</p>
+    <button class="addButton" type="button" (click)="addToCart()">Add to cart</button>
+  </div>
