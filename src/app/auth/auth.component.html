@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="section">
+  <div class="section" *ngIf="!isRegisterMode">
     <div class="row">
       <div class="col-xs-4"></div>
       <div class="col-xs-4 logInHead">
@@ -8,12 +8,19 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-          <!-- Email input -->
-          <input type="text" class="center-block" placeholder="Email" formControlName="email"><br>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()"  *ngIf="!isRegisterMode">
 
-          <!-- Password input -->
-          <input type="password" class="center-block" placeholder="Wachtwoord" formControlName="password">
+          <input type="text" class="center-block" placeholder="Email" formControlName="email">
+  <div *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)" class="error-message">
+    Vul een geldig e-mailadres in.
+  </div>
+
+  <br>
+
+  <input type="password" class="center-block" placeholder="Wachtwoord" formControlName="password">
+  <div *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)" class="error-message">
+    Vul een wachtwoord in.
+  </div>
         </form>
       </div>
     </div>
@@ -30,10 +37,61 @@
         <button class="center-block" (click)="onLogin()">Inloggen</button>
       </div>
     </div>
+    <button class="center-block" (click)="toggleMode()">
+      {{ isRegisterMode ? 'Naar inloggen' : 'Naar registratie' }}
+    </button>
+    <div class="row">
+    </div>
+  </div>
+
+  <div class="section" *ngIf="isRegisterMode" >
+    <div class="row">
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4 logInHead">
+        <h4 class="text-center">Registreren</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <form [formGroup]="loginForm" (ngSubmit)="onRegister()"  *ngIf="isRegisterMode">
+
+          <input type="text" class="center-block" placeholder="Email" formControlName="email">
+  <div *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)" class="error-message">
+    Vul een geldig e-mailadres in.
+  </div>
+
+  <br>
+
+  <input type="password" class="center-block" placeholder="Wachtwoord" formControlName="password">
+  <div *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)" class="error-message">
+    Vul een geldig wachtwoord in:
+    <ul>
+      <li>Minimaal 8 tekens</li>
+      <li>Minstens één hoofdletter</li>
+      <li>Minstens één kleine letter</li>
+      <li>Minstens één cijfer</li>
+      <li>Geen andere symbolen toegestaan</li>
+    </ul>
+  </div>
+        </form>
+      </div>
+    </div>
+    <div class="row errorRow">
+      <div class="col-xs-12 errorDiv">
+        <!-- Display error message if needed -->
+        <!-- <p *ngIf="showError" class="alert-danger text-center error">Email of wachtwoord is niet correct<br>
+          Probeer het opnieuw</p> -->
+      </div>
+    </div>
+    <div class="row">
+    </div>
     <div class="row">
       <div class="col-xs-12">
         <button class="center-block" (click)="onRegister()">Registreer</button>
       </div>
     </div>
+    <button class="center-block" (click)="toggleMode()">
+      {{ isRegisterMode ? 'Naar inloggen' : 'Naar registratie' }}
+    </button>
   </div>
 </div>

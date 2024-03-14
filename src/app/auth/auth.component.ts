@@ -20,7 +20,8 @@ export class AuthComponent {
   newEmail: string = '';
   newPassword: string =  '';
   loginForm: FormGroup;
-
+  isRegisterMode: boolean = false;
+  
   constructor(private authService: AuthService, private router: Router, private loginService: LoginService, private fb: FormBuilder) {}
 
   ngOnInit(){
@@ -29,7 +30,7 @@ export class AuthComponent {
     }
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$')]]
     });
   }
 
@@ -48,4 +49,7 @@ export class AuthComponent {
       });
   }
   
+  toggleMode(): void {
+    this.isRegisterMode = !this.isRegisterMode;
+  }
 }
