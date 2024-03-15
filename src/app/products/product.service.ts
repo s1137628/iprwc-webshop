@@ -17,22 +17,26 @@ export class ProductService{
         return this.products;
     }
 
-    addProduct(product: any){
+    addProduct(product: Product){
         this.dataStorageService.postProduct(product);
         
     }
 
-    setProducts(product: any){
+    setProducts(product: Product[]){
         this.products = product;
     }
 
-    editProduct(product: any){
+    editProduct(product: Product){
         this.dataStorageService.editProduct(product);
     }
 
-    deleteProduct(product: any){
+    deleteProduct(product: Product){
         return this.dataStorageService.deleteProduct(product);
     }
+
+    removeProductFromList(productId: string) {
+        this.products = this.products.filter((p) => p.productId !== productId);
+      }
 
     addProductToCart(product: Product){
         this.cartService.addProduct(product);

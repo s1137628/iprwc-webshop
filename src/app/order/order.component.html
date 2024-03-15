@@ -1,5 +1,21 @@
-<div class="order-screen">
+<div class="order-screen" *ngIf="role === 'USER'">
 <p>Your order</p>
 <p>Total price: {{ totalPrice }}</p>
 <button (click)="confirmOrder()">Confirm order</button>
 </div>
+
+<div class="order-overview" *ngIf="role === 'ADMIN'">
+    <h1>Overzicht van orders</h1>
+    <div *ngIf="orders.length > 0; else emptyState">
+        <div *ngFor="let order of orders">
+          <h1>User met id: {{ order.userId }} heeft order met id: {{order.orderId}} besteld wat {{ order.totalPrice }} EURO kostte.</h1>
+          <button class="deleteButton" type="button" *ngIf="role === 'ADMIN'" (click)="removeOrder(order)">Verwijder order</button>
+        </div>
+      </div>
+
+</div>
+
+<ng-template #emptyState>
+    <h1>Er zijn nog geen orders geplaatst.</h1>
+  </ng-template>
+  

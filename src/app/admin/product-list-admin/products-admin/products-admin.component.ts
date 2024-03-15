@@ -33,15 +33,13 @@ export class ProductsAdminComponent {
       if (editedProduct) {
         this.productService.editProduct(editedProduct);
       }
-
-      this.router.navigate(['../'], { relativeTo: this.route });
+      this.product = editedProduct;
     });
   }
 
   removeProduct() {
     this.productService.deleteProduct(this.product).subscribe(
       () => {
-        
       },
       (error) => {
         console.error('Error deleting product:', error);

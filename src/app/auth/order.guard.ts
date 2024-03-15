@@ -10,7 +10,8 @@ export class OrderGuard implements CanActivate {
   constructor(private authService: AuthService, private cartService: CartService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    if (this.authService.isLoggedIn() && this.cartService.containsItems()) {
+    
+    if (this.authService.isLoggedIn() && this.cartService.containsItems() || this.authService.getUserRole() == 'ADMIN') {
       return true;
     } else {
       this.router.navigate(['products']);

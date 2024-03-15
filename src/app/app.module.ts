@@ -18,7 +18,6 @@ import { ProductEditComponent } from './products/product-edit/product-edit.compo
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 import { AdminComponent } from './admin/admin.component';
@@ -62,7 +61,7 @@ import { NotificationService } from './notifications/notification.service';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ReactiveFormsModule, ProductService, DataStorageService, NotificationService, UserService, JwtHelperService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},  HttpClient, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
+  providers: [ReactiveFormsModule, ProductService, DataStorageService, NotificationService, UserService, JwtHelperService, {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},  HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

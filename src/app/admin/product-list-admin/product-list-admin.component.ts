@@ -22,7 +22,9 @@ export class ProductListAdminComponent {
       this.productService.setProducts(products.payload);
       this.products = this.productService.getProducts();
     });
+
   }
+
 
 
   

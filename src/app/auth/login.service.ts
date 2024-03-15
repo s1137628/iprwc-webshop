@@ -26,8 +26,7 @@ export class LoginService {
       this.http.post<any>(this.apiAuthUrl, credentials).subscribe(
         (response) => {
           sessionStorage.setItem('token', response.token);
-          const userRole = this.authService.getRole(); // Get the role
-          console.log(userRole); // Role is now available
+          const userRole = this.authService.getRole();
           this.router.navigate(['../'], { relativeTo: this.route });
           this.loginChanged.emit();
         },

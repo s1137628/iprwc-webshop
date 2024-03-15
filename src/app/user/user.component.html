@@ -1,18 +1,21 @@
 <div class="order-overview" *ngIf="role === 'USER'">
-  <h1>Welkom, {{ email }}, hier is jouw recenste order te zien!</h1>
-    <div *ngIf="totalPrice > 0; else emptyState"  >
-      <h1>Jouw laatste order kostte: {{ totalPrice }} EURO</h1>
+  <h1>Welkom, {{ email }}, hier zijn jouw orders te zien!</h1>
+  <div *ngIf="orders.length > 0; else emptyState">
+    <div *ngFor="let order of orders">
+      <h1>Order met id: {{ order.orderId }} kostte: {{ order.totalPrice }} EURO</h1>
     </div>
-
-    <button type="button" *ngIf="authService.isLoggedIn()" (click)="authService.loggingOut()">Log out</button>
   </div>
-  
-  <ng-template #emptyState>
-    <h1>Je hebt nog geen order geplaatst.</h1>
-  </ng-template>
+
+  <button type="button" *ngIf="authService.isLoggedIn()" (click)="authService.loggingOut()">Log uit</button>
+</div>
+
+<ng-template #emptyState>
+  <h1>Je hebt nog geen order geplaatst.</h1>
+</ng-template>
 
 <div class="admin-overview" *ngIf="role === 'ADMIN'">
  <h1>Welkom bij uw account overzicht, {{ email }}</h1>
  <button (click)="toAdminPanel()">Naar uw admin panel</button>
+ <button (click)="toOrdersOverview()">Overzicht van orders</button>
  <button type="button" *ngIf="authService.isLoggedIn()" (click)="authService.loggingOut()">Log out</button>
 </div>
