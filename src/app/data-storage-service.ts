@@ -7,7 +7,7 @@ import { User } from "./auth/user.model";
 
 @Injectable()
 export class DataStorageService{
-    private apiUrl = 'http://localhost:8081/api';
+    private apiUrl = 'http://s1137628-iprwc.store:8081/api';
     private bearer = sessionStorage.getItem('token');
 
   constructor(
